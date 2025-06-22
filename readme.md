@@ -38,7 +38,7 @@ Remix Icon (CDN)
 📌 How to Use
 Clone the repository:
 
-git clone https://github.com/your-username/internship-dashboard.git
+https://zaara1117.github.io/web-dev-2/
 Open index.html in your browser.
 
 Try interacting with each section – the form, dashboard stats, todo list, and image gallery.
