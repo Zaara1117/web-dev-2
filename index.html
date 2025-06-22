@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Task Dashboard</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#8b5cf6',
+                        dark: '#0f172a',
+                        darker: '#0a0f1c',
+                        'card-bg': '#1e293b',
+                        'progress-start': '#10b981',
+                        'progress-end': '#3b82f6'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+         :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+        
+        body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(to right, #10b981, #3b82f6);
+        }
+        
+        .dashboard-card {
+            background-color: #1e293b;
+            transition: all 0.3s ease;
+        }
+        
+        .dashboard-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .gradient-border {
+            position: relative;
+            border-radius: 8px;
+            padding: 1px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+        }
+        
+        .gradient-border-content {
+            background-color: #1e293b;
+            border-radius: 7px;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen p-4 md:p-6">
+    <div class="max-w-4xl mx-auto">
+        <!-- Contact Form Section -->
+        <div class="mb-8 dashboard-card rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-6">Contact Form</h2>
+            <form id="contactForm" class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="firstName" class="block text-sm font-medium mb-1">First Name</label>
+                        <input type="text" id="firstName" name="firstName" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-primary">
+                    </div>
+                    <div>
+                        <label for="lastName" class="block text-sm font-medium mb-1">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-primary">
+                    </div>
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium mb-1">Email Address</label>
+                    <input type="email" id="email" name="email" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-primary">
+                </div>
+                <div>
+                    <label for="message" class="block text-sm font-medium mb-1">Message</label>
+                    <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                </div>
+                <div>
+                    <button type="submit" class="px-6 py-2 bg-primary text-white font-medium rounded-button hover:bg-blue-600 transition-colors whitespace-nowrap">Submit</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Dashboard Overview Section -->
+        <div class="mb-8 dashboard-card rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-6">Dashboard Overview</h2>
+            <div class="grid grid-cols-3 gap-4">
+                <div class="dashboard-card rounded-lg p-4 text-center">
+                    <div class="text-3xl font-bold text-primary">5</div>
+                    <div class="text-sm text-gray-400">Tasks</div>
+                </div>
+                <div class="dashboard-card rounded-lg p-4 text-center">
+                    <div class="text-3xl font-bold text-primary">2</div>
+                    <div class="text-sm text-gray-400">Completed</div>
+                </div>
+                <div class="dashboard-card rounded-lg p-4 text-center">
+                    <div class="text-3xl font-bold text-secondary">3</div>
+                    <div class="text-sm text-gray-400">Images</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Progress Section -->
+        <div class="gradient-border mb-8">
+            <div class="gradient-border-content p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-6 h-6 flex items-center justify-center mr-2">
+                        <i class="ri-check-line text-primary"></i>
+                    </div>
+                    <h2 class="text-xl font-bold">Project Progress</h2>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span>HTML & CSS</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+                            <div class="progress-bar h-full rounded-full" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span>JavaScript</span>
+                            <span>92%</span>
+                        </div>
+                        <div class="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+                            <div class="progress-bar h-full rounded-full" style="width: 92%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span>Responsive Design</span>
+                            <span>78%</span>
+                        </div>
+                        <div class="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+                            <div class="progress-bar h-full rounded-full" style="width: 78%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Activity Stats Section -->
+        <div class="dashboard-card rounded-lg p-6 mb-8">
+            <div class="flex items-center mb-4">
+                <div class="w-6 h-6 flex items-center justify-center mr-2">
+                    <i class="ri-line-chart-line text-primary"></i>
+                </div>
+                <h2 class="text-xl font-bold">Activity Stats</h2>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="dashboard-card rounded-lg p-4 text-center">
+                    <div class="text-3xl font-bold text-primary">156</div>
+                    <div class="text-sm text-gray-400">Lines of Code</div>
+                </div>
+                <div class="dashboard-card rounded-lg p-4 text-center">
+                    <div class="text-3xl font-bold text-secondary">24</div>
+                    <div class="text-sm text-gray-400">Functions</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- To-Do List Section -->
+        <div class="dashboard-card rounded-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4">To-Do List</h2>
+            <div class="flex mb-4">
+                <input type="text" id="todoInput" placeholder="Add new task..." class="flex-grow px-4 py-2 bg-gray-800 border border-gray-700 rounded-l focus:outline-none focus:ring-2 focus:ring-primary">
+                <button id="addTodoBtn" class="px-4 py-2 bg-primary text-white font-medium rounded-r-button hover:bg-blue-600 transition-colors whitespace-nowrap">Add</button>
+            </div>
+            <ul id="todoList" class="space-y-2">
+                <li class="flex items-center justify-between p-3 bg-gray-800 rounded">
+                    <div class="flex items-center">
+                        <input type="checkbox" class="mr-3 w-4 h-4 accent-primary">
+                        <span>Complete contact form validation</span>
+                    </div>
+                    <button class="delete-todo text-gray-400 hover:text-red-500">
+                        <div class="w-6 h-6 flex items-center justify-center">
+                            <i class="ri-delete-bin-line"></i>
+                        </div>
+                    </button>
+                </li>
+                <li class="flex items-center justify-between p-3 bg-gray-800 rounded">
+                    <div class="flex items-center">
+                        <input type="checkbox" class="mr-3 w-4 h-4 accent-primary">
+                        <span>Implement responsive layout</span>
+                    </div>
+                    <button class="delete-todo text-gray-400 hover:text-red-500">
+                        <div class="w-6 h-6 flex items-center justify-center">
+                            <i class="ri-delete-bin-line"></i>
+                        </div>
+                    </button>
+                </li>
+                <li class="flex items-center justify-between p-3 bg-gray-800 rounded">
+                    <div class="flex items-center">
+                        <input type="checkbox" checked class="mr-3 w-4 h-4 accent-primary">
+                        <span class="line-through text-gray-500">Set up project structure</span>
+                    </div>
+                    <button class="delete-todo text-gray-400 hover:text-red-500">
+                        <div class="w-6 h-6 flex items-center justify-center">
+                            <i class="ri-delete-bin-line"></i>
+                        </div>
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Image Gallery Section -->
+        <div class="dashboard-card rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4">Image Gallery</h2>
+            <div class="flex mb-4">
+                <input type="text" id="imageUrlInput" placeholder="Image URL..." class="flex-grow px-4 py-2 bg-gray-800 border border-gray-700 rounded-l focus:outline-none focus:ring-2 focus:ring-primary">
+                <button id="addImageBtn" class="px-4 py-2 bg-primary text-white font-medium rounded-r-button hover:bg-blue-600 transition-colors whitespace-nowrap">Add</button>
+            </div>
+            <div id="imageGallery" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <div class="relative group">
+                    <img src="https://readdy.ai/api/search-image?query=modern%2520web%2520development%2520coding%2520screen%2520with%2520HTML%2520CSS%2520JavaScript%2520code%2520on%2520dark%2520background%2520with%2520blue%2520accents&width=300&height=200&seq=1&orientation=landscape"
+                        alt="Code sample" class="w-full h-40 object-cover rounded">
+                    <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button class="delete-image bg-black bg-opacity-50 text-white p-1 rounded">
+                            <div class="w-6 h-6 flex items-center justify-center">
+                                <i class="ri-close-line"></i>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <img src="https://readdy.ai/api/search-image?query=responsive%2520web%2520design%2520illustration%2520showing%2520website%2520on%2520multiple%2520devices%2520with%2520dark%2520theme%2520and%2520blue%2520highlights&width=300&height=200&seq=2&orientation=landscape"
+                        alt="Responsive design" class="w-full h-40 object-cover rounded">
+                    <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button class="delete-image bg-black bg-opacity-50 text-white p-1 rounded">
+                            <div class="w-6 h-6 flex items-center justify-center">
+                                <i class="ri-close-line"></i>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <img src="https://readdy.ai/api/search-image?query=javascript%2520programming%2520concept%2520with%2520code%2520editor%2520showing%2520DOM%2520manipulation%2520functions%2520on%2520dark%2520background%2520with%2520purple%2520highlights&width=300&height=200&seq=3&orientation=landscape"
+                        alt="JavaScript code" class="w-full h-40 object-cover rounded">
+                    <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button class="delete-image bg-black bg-opacity-50 text-white p-1 rounded">
+                            <div class="w-6 h-6 flex items-center justify-center">
+                                <i class="ri-close-line"></i>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script id="contactFormValidation">
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                let isValid = true;
+                const firstName = document.getElementById('firstName').value.trim();
+                const lastName = document.getElementById('lastName').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+
+                // Simple validation
+                if (firstName === '') {
+                    isValid = false;
+                    highlightError('firstName');
+                }
+
+                if (lastName === '') {
+                    isValid = false;
+                    highlightError('lastName');
+                }
+
+                if (email === '' || !isValidEmail(email)) {
+                    isValid = false;
+                    highlightError('email');
+                }
+
+                if (message === '') {
+                    isValid = false;
+                    highlightError('message');
+                }
+
+                if (isValid) {
+                    alert('Form submitted successfully!');
+                    contactForm.reset();
+                } else {
+                    alert('Please fill all required fields correctly.');
+                }
+            });
+
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            function highlightError(fieldId) {
+                const field = document.getElementById(fieldId);
+                field.classList.add('border-red-500');
+                field.classList.add('ring-red-500');
+
+                field.addEventListener('input', function() {
+                    field.classList.remove('border-red-500');
+                    field.classList.remove('ring-red-500');
+                }, {
+                    once: true
+                });
+            }
+        });
+    </script>
+
+    <script id="todoListFunctionality">
+        document.addEventListener('DOMContentLoaded', function() {
+            const todoInput = document.getElementById('todoInput');
+            const addTodoBtn = document.getElementById('addTodoBtn');
+            const todoList = document.getElementById('todoList');
+
+            // Add new todo
+            addTodoBtn.addEventListener('click', function() {
+                const todoText = todoInput.value.trim();
+                if (todoText) {
+                    addTodoItem(todoText);
+                    todoInput.value = '';
+                }
+            });
+
+            // Add todo on Enter key
+            todoInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const todoText = todoInput.value.trim();
+                    if (todoText) {
+                        addTodoItem(todoText);
+                        todoInput.value = '';
+                    }
+                }
+            });
+
+            // Handle delete buttons
+            todoList.addEventListener('click', function(e) {
+                if (e.target.closest('.delete-todo')) {
+                    e.target.closest('li').remove();
+                }
+            });
+
+            function addTodoItem(text) {
+                const li = document.createElement('li');
+                li.className = 'flex items-center justify-between p-3 bg-gray-800 rounded';
+                li.innerHTML = `
+                    <div class="flex items-center">
+                        <input type="checkbox" class="mr-3 w-4 h-4 accent-primary">
+                        <span>${text}</span>
+                    </div>
+                    <button class="delete-todo text-gray-400 hover:text-red-500">
+                        <div class="w-6 h-6 flex items-center justify-center">
+                            <i class="ri-delete-bin-line"></i>
+                        </div>
+                    </button>
+                `;
+
+                // Add checkbox functionality
+                const checkbox = li.querySelector('input[type="checkbox"]');
+                const span = li.querySelector('span');
+
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        span.classList.add('line-through', 'text-gray-500');
+                    } else {
+                        span.classList.remove('line-through', 'text-gray-500');
+                    }
+                });
+
+                todoList.appendChild(li);
+            }
+        });
+    </script>
+
+    <script id="imageGalleryFunctionality">
+        document.addEventListener('DOMContentLoaded', function() {
+            const imageUrlInput = document.getElementById('imageUrlInput');
+            const addImageBtn = document.getElementById('addImageBtn');
+            const imageGallery = document.getElementById('imageGallery');
+
+            // Add new image
+            addImageBtn.addEventListener('click', function() {
+                const imageUrl = imageUrlInput.value.trim();
+                if (imageUrl) {
+                    addImageToGallery(imageUrl);
+                    imageUrlInput.value = '';
+                }
+            });
+
+            // Add image on Enter key
+            imageUrlInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const imageUrl = imageUrlInput.value.trim();
+                    if (imageUrl) {
+                        addImageToGallery(imageUrl);
+                        imageUrlInput.value = '';
+                    }
+                }
+            });
+
+            // Handle delete buttons
+            imageGallery.addEventListener('click', function(e) {
+                if (e.target.closest('.delete-image')) {
+                    e.target.closest('.relative').remove();
+                }
+            });
+
+            function addImageToGallery(url) {
+                const div = document.createElement('div');
+                div.className = 'relative group';
+                div.innerHTML = `
+                    <img src="${url}" alt="Gallery image" class="w-full h-40 object-cover rounded">
+                    <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button class="delete-image bg-black bg-opacity-50 text-white p-1 rounded">
+                            <div class="w-6 h-6 flex items-center justify-center">
+                                <i class="ri-close-line"></i>
+                            </div>
+                        </button>
+                    </div>
+                `;
+
+                imageGallery.appendChild(div);
+            }
+        });
+    </script>
+</body>
+
+</html>
